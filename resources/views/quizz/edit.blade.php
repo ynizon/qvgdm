@@ -192,7 +192,7 @@
 															foreach ($files as $file){
 																if ($file != ".." and $file != "."){
 																	?>
-																	<option <?php if($question->background == $file){echo "selected";} ?>value="<?php echo $file;?>"><?php echo str_replace(".jpg","",$file);?></option>
+																	<option <?php if($question->background == $file){echo "selected";} ?> value="<?php echo $file;?>"><?php echo str_replace(".jpg","",$file);?></option>
 																	<?php
 																}
 															}

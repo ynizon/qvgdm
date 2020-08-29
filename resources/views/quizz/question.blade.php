@@ -145,7 +145,8 @@ $num_quizz = $quizz->id;
 						?>
 						<div style="<?php echo $display;?>">
 							<?php						
-							echo strip_tags($question->pj,"<a><iframe><img><audio><video><p><br><hr><media>");	
+							//echo strip_tags($question->pj,"<object><param><embed><a><iframe><img><audio><video><p><br><hr><media>");	
+							echo (html_entity_decode($question->pj));
 							?>
 						</div>
 						<?php
