@@ -182,7 +182,7 @@
 												</label>
 
 												<div class="">													
-													<input id="libelle_<?php echo $q;?>" type="text" class="form-control" name="libelle_<?php echo $q;?>" value="{!! $question->libelle !!}" />
+													<input id="libelle_<?php echo $q;?>" type="text" class="form-control" name="libelle_<?php echo $q;?>" value="<?php echo str_replace('"',"'",$question->libelle);?>" />
 													<br/>
 													<div >
 														Fond:
@@ -224,7 +224,7 @@
 												?>
 												<li style="list-style:none">
 													<input onchange="recalcul_check(<?php echo $q;?>,<?php echo $r;?>)" onclick="recalcul_check(<?php echo $q;?>,<?php echo $r;?>)" id="valide_<?php echo $q;?>_<?php echo $r;?>" type="checkbox" name="valide_<?php echo $q;?>_<?php echo $r;?>" value="1" <?php if($reponse->valide==1){echo "checked";}?>/>
-													<input id="libelle_<?php echo $q;?>_<?php echo $r;?>" type="text" class="form-control" style="display:inline;width:70%" name="libelle_<?php echo $q;?>_<?php echo $r;?>" value="{!! $reponse->libelle !!}" />
+													<input id="libelle_<?php echo $q;?>_<?php echo $r;?>" type="text" class="form-control" style="display:inline;width:70%" name="libelle_<?php echo $q;?>_<?php echo $r;?>" value="<?php echo str_replace('"',"'",$reponse->libelle);?>" />
 													<input onchange="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" onclick="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" maxlength= "2" id="vote_<?php echo $q;?>_<?php echo $r;?>" type="text" style='display:inline;width:50px' class="form-control" name="vote_<?php echo $q;?>_<?php echo $r;?>" value="{!! $reponse->vote !!}" />												
 												</li>
 												<?php
