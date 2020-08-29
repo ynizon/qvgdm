@@ -37,11 +37,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 	
-	public function quizz($paginate = -1){
+	public function quizz($paginate = -1, $name = ""){
 		if ($paginate == -1){
-			return $this->hasMany('App\Quizz');
+			if ($name == ""){
+				$r = $this->hasMany('App\Quizz');
+			}else{
+				$r = $this->hasMany('App\Quizz')->where("nom","like","%".$name."%");
+			}
 		}else{
-			return $this->hasMany('App\Quizz')->paginate($paginate);
+			if ($name == ""){
+				$r = $this->hasMany('App\Quizz')->paginate($paginate);
+			}else{
+				$r = $this->hasMany('App\Quizz')->where("nom","like","%".$name."%")->paginate($paginate);
+			}
 		}
+		
+		return $r;
 	}
 }

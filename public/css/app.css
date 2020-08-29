@@ -10937,7 +10937,18 @@ body{background-color:#000;}
     background-color: rgba(88, 61, 179, 0.86);
     border-color: rgba(88, 61, 179, 0.70);
 }
+.btn-primary:hover{
+	background-color: #fff;
+    color: rgba(88, 61, 179, 0.86);
+    border-color: rgba(88, 61, 179, 0.70);
+}
 
 .btn-link,.btn-link:hover {
 	color:  rgba(88, 61, 179, 0.86) ;
+}
+
+.footer{
+	position: fixed;
+    bottom: 0;
+    width: 100%;
 }

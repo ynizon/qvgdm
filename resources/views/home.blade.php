@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Mes quizz</div>
 
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+					
                     <a href='/quizz/create'><i class="fa fa-plus"></i></a>
 					<ul>
 						<?php
@@ -34,6 +34,18 @@
                 </div>
             </div>
         </div>
+		
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<form method="get">
+						{{ csrf_field() }}
+						<input type="text" name="name" placeholder="nom du quizz" value="<?php echo $name;?>" /><br/><br/>
+						<input class="btn btn-primary" type="submit" value="Chercher un quizz" />
+					</form>
+				</div>
+			</div>
+		</div>
     </div>
 </div>
 @endsection

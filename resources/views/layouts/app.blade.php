@@ -22,11 +22,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 	<link rel="stylesheet" href="/css/font-awesome.min.css" />
 	<link href="{{ asset('css/countrySelect.min.css') }}" rel="stylesheet" />
-	
-	
-	<!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}"> 
-
 
 	<script>
 	//Permet davoir le son dans lautoplay
@@ -90,8 +85,18 @@
 
         <main class="py-4">
             @yield('content')
+			
         </main>
+		<br style="clear:both"/>
+		<br style="clear:both"/>
+		<br style="clear:both"/>
 		
+		<nav class="footer navbar navbar-expand-md navbar-light bg-white shadow-sm">
+			<div class="container">	
+				<br/>
+				<a class="navbar-brand" href='/contact'>Me contacter</a>  <a class="navbar-brand"  href='https://www.gameandme.fr'>(c) Yohann Nizon - Expert PHP Nantes</a>
+			</div>
+		</nav>
     </div>
 </body>
 </html>

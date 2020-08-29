@@ -22,14 +22,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
 		if (Auth::user()->id == 2){
 			Auth::logout();
 			return redirect("/");
 		}else{
-			$quizz = Auth::user()->quizz(50);
-			return view('home', compact("quizz"));
+			$name  = $request->input("name");
+			$quizz = Auth::user()->quizz(50,$name);
+
+			return view('home', compact("quizz","name"));
 		}
     }
 	

@@ -24,6 +24,16 @@
 								Nom du quizz (type) - nombre de fois gagné / nombre de fois joué<br/>
 								<ul>									
 									<?php
+									if (!isset($_GET["page"])){
+										foreach ($last_quizzs as $quizz){
+											?>
+											<li><a href="/quizz/<?php echo $quizz->id;?>"><?php echo $quizz->nom;?><?php if ($quizz->type != ""){echo " (".$quizz->type.")";} echo " - ".$quizz->nbgagner."/".$quizz->nb;?></a></li>
+											<?php
+										}
+										?>
+										<li style="list-style:none"><hr/></li>
+									<?php
+									}
 									foreach ($quizzs as $quizz){
 										?>
 										<li><a href="/quizz/<?php echo $quizz->id;?>"><?php echo $quizz->nom;?><?php if ($quizz->type != ""){echo " (".$quizz->type.")";} echo " - ".$quizz->nbgagner."/".$quizz->nb;?></a></li>
@@ -36,13 +46,15 @@
 							</div>
 							<div class="col-md-6" style="text-align:right">
 								<img src="/images/logo_transp.png" />
+								<br/><br/>
+								<form method="get">
+									{{ csrf_field() }}
+									<input type="text" name="name" placeholder="nom du quizz" value="<?php echo $name;?>" /><br/><br/>
+									<input class="btn btn-primary" type="submit" value="Chercher un quizz" />
+								</form>
 							</div>
 							
-						</div>
-						<div class="col-md-12" style="text-align:center;border-top:1px solid #ccc">	
-							<br/>
-							<a href='/contact'>Contact</a> | <a href='https://www.gameandme.fr'>(c) Yohann Nizon - Expert PHP Nantes</a>
-						</div>
+						</div>						
 					</div>
 				</div>
 			</div>
