@@ -54,6 +54,7 @@ $num_quizz = $quizz->id;
 				<?php
 				if ($question->num==16){?>
 					<img src='/images/feu-artifice-a.jpg'/>'<br/>
+					<?php echo $quizz->conclusion;?>
 				<?php
 				}else{
 				?>	
@@ -127,7 +128,7 @@ $num_quizz = $quizz->id;
 								name: 'Réponses',
 								colorByPoint: true,
 								colors:colors,
-								data: [<?php echo $reponses[0]->vote;?>,<?php echo $reponses[1]->vote;?>,<?php echo $reponses[2]->vote;?>,<?php echo $reponses[3]->vote;?>]
+								data: [<?php if (isset($reponses[0])){echo $reponses[0]->vote;?>,<?php echo $reponses[1]->vote;?>,<?php echo $reponses[2]->vote;?>,<?php echo $reponses[3]->vote;}?>]
 							  }]
 							});
 

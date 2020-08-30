@@ -65,12 +65,17 @@ class QuizzController extends Controller
     {
 		$this->middleware('auth');
 		$quizz = new Quizz();
+		if ($quizz->id == ""){
+			$quizz->id = uniqid();
+		}
+		$quizz->id_quizz = $quizz->id;
+		
 		$quizz = $this->save($quizz, $request);
 		
 		$question = New Question();		
 		$question->quizz_id = $quizz->id;
 		$question->num = 1;
-		$question->id_quizz = uniqid();
+		$question->id = uniqid();
 		$question->pj = "";
 		$question->save();
 		$question->createReponses();			
@@ -131,6 +136,7 @@ class QuizzController extends Controller
 		if ($num == 16){//Fin du jeu
 			$quizz->nbgagner = $quizz->nbgagner +1;
 			$quizz->save(); 
+			$question->num = 16;
 		}
 		
 		if ($request->input("joker") == "tel"){
@@ -287,6 +293,7 @@ class QuizzController extends Controller
 		$questions = iterator_to_array ($collection);
 		
 		$inputs = $request->all();
+
 		for ($q=1; $q<=15; $q++){
 			if (isset($questions[$q-1])){
 				$question=$questions[$q-1];
@@ -320,7 +327,11 @@ class QuizzController extends Controller
 			}
 		}
 		
-		return redirect('quizz/'.$id.'/edit?questions=1');
+		if (!isset($questions[14])){
+			return redirect('quizz/'.$id.'/addquestion');
+		}else{
+			return redirect('quizz/'.$id.'/edit?questions=1');
+		}
 	}
 	
 	public function createimagewithword(Request $request){
