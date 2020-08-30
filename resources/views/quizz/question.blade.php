@@ -55,6 +55,11 @@ $num_quizz = $quizz->id;
 				if ($question->num==16){?>
 					<img src='/images/feu-artifice-a.jpg'/><br/>
 					<?php echo $quizz->conclusion;?>
+					
+					<br/>
+					<hr/>
+					<br/>
+					Pour partager le quizz, envoyer ce lien <?php echo config("app.url");?>/quizz/<?php echo $quizz->id;?>
 				<?php
 				}else{
 				?>	
