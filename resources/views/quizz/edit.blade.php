@@ -67,7 +67,7 @@
 								</label>
 
 								<div class="col-md-6">								
-									<input required id="type" placeholder="Culture générale" type="text" class="form-control" name="picture" value="{!! $quizz->type !!}" />
+									<input required id="type" placeholder="Culture générale" type="text" class="form-control" name="type" value="{!! $quizz->type !!}" />
 									  
 									@if ($errors->has('type'))
 										<span class="help-block">

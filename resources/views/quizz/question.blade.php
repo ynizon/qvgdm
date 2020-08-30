@@ -53,7 +53,7 @@ $num_quizz = $quizz->id;
 				<td>
 				<?php
 				if ($question->num==16){?>
-					<img src='/images/feu-artifice-a.jpg'/>'<br/>
+					<img src='/images/feu-artifice-a.jpg'/><br/>
 					<?php echo $quizz->conclusion;?>
 				<?php
 				}else{

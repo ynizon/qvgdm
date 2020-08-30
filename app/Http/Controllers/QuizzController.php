@@ -202,7 +202,7 @@ class QuizzController extends Controller
 		}
 		
 		$inputs = $request->all();
-		$fields = ["nom","intro","conclusion","langue","status"] ;
+		$fields = ["nom","intro","conclusion","langue","status","type"] ;
 		foreach ($fields as $field){
 			$quizz->$field = $inputs[$field];
 		}
