@@ -69,7 +69,10 @@ class QuizzController extends Controller
 			$quizz->id = uniqid();
 		}
 		$quizz->id_quizz = $quizz->id;
-		
+		$quizz->user_id = Auth::user()->id;
+		$quizz->intro = "";
+		$quizz->conclusion = "";
+		$quizz->save();
 		$quizz = $this->save($quizz, $request);
 		
 		$question = New Question();		
