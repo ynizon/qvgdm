@@ -54,6 +54,22 @@ function recalcul_check(iNumQuestion,iNumReponse){
 
 function recalcul_vote(iNumQuestion,iNumReponse){
 	var iTotal=0;
+	
+	
+	if (isNaN(document.getElementById('vote_'+iNumQuestion+"_1").value)){
+		document.getElementById('vote_'+iNumQuestion+"_1").value = 0;
+	}
+	if (isNaN(document.getElementById('vote_'+iNumQuestion+"_2").value)){
+		document.getElementById('vote_'+iNumQuestion+"_2").value = 0;
+	}
+	if (isNaN(document.getElementById('vote_'+iNumQuestion+"_3").value)){
+		document.getElementById('vote_'+iNumQuestion+"_3").value = 0;
+	}
+	if (isNaN(document.getElementById('vote_'+iNumQuestion+"_4").value)){
+		document.getElementById('vote_'+iNumQuestion+"_4").value = 0;
+	}
+	
+	
 	var iVal=100-parseInt(document.getElementById('vote_'+iNumQuestion+"_"+iNumReponse).value);
 	
 	if (iNumReponse!=1){
