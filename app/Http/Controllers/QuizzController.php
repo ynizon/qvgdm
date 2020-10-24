@@ -492,4 +492,27 @@ class QuizzController extends Controller
 
 		imagejpeg($image);
 	}
+	
+	// Joker tel
+	public function google($id, $num, Request $request){
+		$quizz = Quizz::find($id);
+		$collection = $quizz->questions();
+		$questions = iterator_to_array ($collection);
+		$question = new Question();
+		if (isset($questions[$num-1])){
+			$question = $questions[$num-1];
+		}
+		
+		if ($quizz->status == 0 and $quizz->user_id != Auth::user()->id){
+			return view('errors/403',  array());
+			exit();
+		}		
+		
+		if ($request->input("joker") == "tel"){
+			Session::put('tel', '');
+		}
+		
+		$url ="https://www.google.com/search?site=&hl=". $quizz->langue."&q=". str_replace('"'," ",$question->libelle);
+		return redirect($url);
+	}
 }

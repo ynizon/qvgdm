@@ -26,6 +26,7 @@ Route::get("/quizz/{id}/addquestion",'QuizzController@addquestion');
 Route::get("/createimagewithword",'QuizzController@createimagewithword');
 Route::post("/quizz/{id}/update_questions",'QuizzController@update_questions')->name("update_questions");
 Route::post("/quizz/{id}/question/{num}",'QuizzController@show_question');
+Route::get("/quizz/{id}/google/{num}",'QuizzController@google');
 Route::get("/quizz/{id}/question/{num}",'QuizzController@show_question');
 Route::get("/quizz/{id}/valide/{num_question}/{num_reponse}",'QuizzController@valide');
 Route::resource('quizz', 'QuizzController');

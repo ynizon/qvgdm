@@ -35,7 +35,7 @@ $num_quizz = $quizz->id;
 					
 				if ($tel=="OK"){
 				?>
-					<a href='/quizz/<?php echo $num_quizz."/valide/".$question->num."/0?joker=tel";?>' onclick="window.open('http://www.google.com/search?site=&hl=<?php echo $quizz->langue;?>&q=<?php echo str_replace('"'," ",$question->libelle);?>');"><img border="0" src='/images/icone_tel.jpg' /></a><br/><br/>
+					<a href='/quizz/<?php echo $num_quizz."/google/".$question->num."?joker=tel";?>' target="google" onclick="alert('Un onglet avec la question va s\'ouvrir');document.getElementById('joker_tel').src='/images/icone_telKC.jpg';"><img border="0" id='joker_tel' src='/images/icone_tel.jpg' /></a><br/><br/>
 				<?php
 				}else{
 					echo "<img border='0' src='/images/icone_telKC.jpg' /><br/><br/>";
