@@ -483,8 +483,22 @@ abstract class HelperServiceProvider extends ServiceProvider
                             'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
                             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
                             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
-		$str = strtr( $str, $unwanted_array );
-		 
-		return $str; 
+				
+		$find = false;
+		$str2 = utf8_encode($str);
+		foreach ($unwanted_array as $char=>$rep){
+			$pos = strpos($str2, $char);
+			if ($pos !== false){
+				$str2 = str_replace($char, $rep, $str2);
+				$find = true;
+			}
+		}
+		
+		if ($find == false){
+			$str2 = $str;
+			$str2 = strtr( $str, $unwanted_array );
+		}
+		
+		return $str2; 
 	} 
 }
