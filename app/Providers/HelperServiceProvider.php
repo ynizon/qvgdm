@@ -483,9 +483,11 @@ abstract class HelperServiceProvider extends ServiceProvider
                             'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
                             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
                             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
-				
+			
+			
 		$find = false;
-		$str2 = utf8_encode($str);
+		
+		$str2=$str;//view-source:https://qvgdm.gameandme.fr/createimagewithword?image_filename=/images/backgrounds/foucaut.jpg&num_question=5&num_quizz=5f4b6b33e357a&perdu=&joker=
 		foreach ($unwanted_array as $char=>$rep){
 			$pos = strpos($str2, $char);
 			if ($pos !== false){
@@ -493,6 +495,19 @@ abstract class HelperServiceProvider extends ServiceProvider
 				$find = true;
 			}
 		}
+		
+		
+		if ($find == false){
+			$str2 = utf8_encode($str);//view-source:https://qvgdm.gameandme.fr/createimagewithword?image_filename=/images/backgrounds/foucaut.jpg&num_question=1&num_quizz=6006f4bd506f0&perdu=&joker=
+			foreach ($unwanted_array as $char=>$rep){
+				$pos = strpos($str2, $char);
+				if ($pos !== false){
+					$str2 = str_replace($char, $rep, $str2);
+					$find = true;
+				}
+			}
+		}
+		
 		
 		if ($find == false){
 			$str2 = $str;
