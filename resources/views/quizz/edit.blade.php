@@ -124,8 +124,8 @@
 
 								<div class="col-md-6">
 									<select id="status" required class="form-control" name="status">
-										<option value="0" <?php if ($quizz->status == 0){echo "checked";}?> >Brouillon</option>
-										<option value="1" <?php if ($quizz->status == 1){echo "checked";}?>>Publié</option>
+										<option value="0" <?php if ($quizz->status == 0){echo "selected";}?> >Brouillon</option>
+										<option value="1" <?php if ($quizz->status == 1){echo "selected";}?>>Publié</option>
 									</select>
 
 									@if ($errors->has('status'))
@@ -208,8 +208,8 @@
 													Cacher le média
 
 													<select id="cacher_media_<?php echo $q;?>" required class="form-control" name="cacher_media_<?php echo $q;?>">
-														<option value="0" <?php if ($question->cacher_media == 0){echo "checked";}?> >Caché</option>
-														<option value="1" <?php if ($question->cacher_media == 1){echo "checked";}?>>Affiché</option>
+														<option value="0" <?php if ($question->cacher_media == 0){echo "selected";}?> >Caché</option>
+														<option value="1" <?php if ($question->cacher_media == 1){echo "selected";}?>>Affiché</option>
 													</select>
 												</div>
 											</div>
