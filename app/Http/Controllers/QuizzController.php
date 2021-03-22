@@ -379,11 +379,11 @@ class QuizzController extends Controller
 		
 		//Si c'est perdu
 		if ($perdu==1){
-			$question="Aie Aie Aie , c'est perdu ! Voulez vous rententer votre chance (pensez aux jokers) ?";
+			$question="Aie Aie Aie , c'est perdu ! Voulez-vous retenter votre chance (pensez aux jokers) ?";
 			$reponse1="Oui, je refais tout";
-			$reponse2="Oui, mais je reprend ou    j'ai perdu";
-			$reponse3="Non, un autre quizz";
-			$reponse4="Je suis dég, je me casse...Il est tout pourri ce jeu !";	
+			$reponse2="Oui, mais je reprends ou   j'ai perdu";
+			$reponse3="Non, un autre quiz";
+			$reponse4="Je suis décu, j'arrete là. Il est nul ce jeu !";	
 		}
 
 		//Si c'est gagné
