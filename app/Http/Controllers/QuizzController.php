@@ -218,7 +218,9 @@ class QuizzController extends Controller
 			$quizz->nbgagner = 0;
 		}
 		
-		$quizz->user_id = Auth::user()->id;
+		if (empty($quizz->user_id)) {
+			$quizz->user_id = Auth::user()->id;
+		}
         $quizz->save();
 		 
 		return $quizz;

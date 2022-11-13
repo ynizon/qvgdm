@@ -13,7 +13,7 @@
 					}else{
 						$route = ['url' => ['quizz'],'files'=>true, 'method' => $method, 'class' => 'form-horizontal panel', 'onsubmit'=> 'return check()'];
 					}
-					
+
 					?>
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item <?php if (!isset($_GET["questions"])){echo "active";}?>">
@@ -23,7 +23,7 @@
 							<a class="nav-link <?php if (isset($_GET["questions"])){echo "active";}?>" data-toggle="tab" href="#questions"><?php echo count($quizz->questions());?>/15 questions</a>
 						</li>
 					</ul>
-					
+
 					<div class="tab-content">
 						<div id="quizz" class="tab-pane fade <?php if (!isset($_GET["questions"])){echo "show active";}?>">
 							<br/>
@@ -38,7 +38,7 @@
 										<a href='<?php echo config("app.url");?>/quizz/<?php echo $quizz->id;?>' target="_blank">Lien vers votre quizz: <?php echo config("app.url");?>/quizz/<?php echo $quizz->id;?></a>
 									<?php
 									}else{
-										?>Ici vous enregistrez les informations générales du quizz. Vos questions et vos reponses sont dans l'autre onglet. 
+										?>Ici vous enregistrez les informations générales du quizz. Vos questions et vos reponses sont dans l'autre onglet.
 										Vous pouvez ajouter des medias (videos, audios...) provenant de deezer, youtube... Pour cela, il faut inserer le code HTML provenant du site dans la case correspondante. Sur deezer, vous pouvez creer des blind test musicaux et pour eviter de voir le titre de la chanson , il vous faudra cacher le media.
 										Enfin, quand vos questions sont terminées, cliquez sur Enregistrer, puis tester les via l'adresse ecrite dans "Lien direct". Celle ci apparaitra après votre premier enregistrement. Sélectionner le compteur pour une remise a 0 des visites, puis sélectionner le statut publié et réenregistrer. Votre quizz est terminé et visible par tous.
 										<?php
@@ -46,8 +46,8 @@
 									?>
 								</label>
 							</div>
-						
-							
+
+
 							<div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}">
 								<label for="nom" class="col-md-4 control-label">Nom</label>
 
@@ -61,14 +61,14 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-								<label for="picture" class="col-md-4 control-label">Type de quizz							
+								<label for="picture" class="col-md-4 control-label">Type de quizz
 								</label>
 
-								<div class="col-md-6">								
+								<div class="col-md-6">
 									<input required id="type" placeholder="Culture générale" type="text" class="form-control" name="type" value="{!! $quizz->type !!}" />
-									  
+
 									@if ($errors->has('type'))
 										<span class="help-block">
 											<strong>{{ $errors->first('type') }}</strong>
@@ -76,7 +76,7 @@
 									@endif
 								</div>
 							 </div>
-							 
+
 							<div class="form-group{{ $errors->has('langue') ? ' has-error' : '' }}">
 								<label for="langue" class="col-md-4 control-label">Langue</label>
 
@@ -90,7 +90,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group{{ $errors->has('intro') ? ' has-error' : '' }}">
 								<label for="intro" class="col-md-4 control-label">Message d'introduction</label>
 
@@ -104,7 +104,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group{{ $errors->has('conclusion') ? ' has-error' : '' }}">
 								<label for="conclusion" class="col-md-4 control-label">Message final</label>
 
@@ -118,7 +118,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
 								<label for="status" class="col-md-4 control-label">Statut</label>
 
@@ -135,7 +135,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group{{ $errors->has('reset') ? ' has-error' : '' }}">
 								<label for="reset" class="col-md-4 control-label">Compteur</label>
 
@@ -152,7 +152,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 							<div class="form-group">
 									<div class="col-md-8 col-md-offset-4">
 										<button type="submit" class="btn btn-primary">
@@ -160,10 +160,10 @@
 										</button>
 
 									</div>
-								</div>                    
+								</div>
 							{!! Form::close() !!}
 						</div>
-						
+
 						<div id="questions" class="tab-pane <?php if (isset($_GET["questions"])){echo "show active";}?>">
 							<br/>
 							{!! Form::model($quizz, ['route' => ['update_questions',$quizz->id],'files'=>true, 'method' =>"POST", 'class' => 'form-horizontal panel']) !!}
@@ -181,7 +181,7 @@
 													<input required id="num_<?php echo $q;?>" type="text" class="form-control" style="display:inline;width:50px;" name="num_<?php echo $q;?>" value="{!! $question->num !!}" />
 												</label>
 
-												<div class="">													
+												<div class="">
 													<input id="libelle_<?php echo $q;?>" type="text" class="form-control" name="libelle_<?php echo $q;?>" value="<?php echo str_replace('"',"'",$question->libelle);?>" />
 													<br/>
 													<div >
@@ -190,10 +190,23 @@
 															<?php
 															$files = scandir(public_path()."/images/backgrounds");
 															foreach ($files as $file){
-																if ($file != ".." and $file != "."){
-																	?>
-																	<option <?php if($question->background == $file){echo "selected";} ?> value="<?php echo $file;?>"><?php echo str_replace(".jpg","",$file);?></option>
-																	<?php
+                                                                if ($file != ".." and $file != "."){
+                                                                    if (is_dir(public_path()."/images/backgrounds/".$file)) {
+                                                                        if ($file == $quizz->id){
+                                                                            $subfiles = scandir(public_path()."/images/backgrounds/".$file);
+                                                                            foreach ($subfiles as $subfile){
+                                                                                if ($subfile != ".." and $subfile != "."){
+                                                                                    ?>
+                                                                                    <option <?php if($question->background == $file."/".$subfile){echo "selected";} ?> value="<?php echo $file."/".$subfile;?>"><?php echo str_replace(".jpg","",$file."/".$subfile);?></option>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    } else {
+                                                                        ?>
+                                                                        <option <?php if($question->background == $file){echo "selected";} ?> value="<?php echo $file;?>"><?php echo str_replace(".jpg","",$file);?></option>
+                                                                        <?php
+                                                                    }
 																}
 															}
 															?>
@@ -204,7 +217,7 @@
 													<br/>
 													<textarea id="pj_<?php echo $q;?>" class="form-control" name="pj_<?php echo $q;?>">{!! $question->pj !!}</textarea>
 													<br/>
-													
+
 													Cacher le média
 
 													<select id="cacher_media_<?php echo $q;?>" required class="form-control" name="cacher_media_<?php echo $q;?>">
@@ -225,18 +238,18 @@
 												<li style="list-style:none">
 													<input onchange="recalcul_check(<?php echo $q;?>,<?php echo $r;?>)" onclick="recalcul_check(<?php echo $q;?>,<?php echo $r;?>)" id="valide_<?php echo $q;?>_<?php echo $r;?>" type="checkbox" name="valide_<?php echo $q;?>_<?php echo $r;?>" value="1" <?php if($reponse->valide==1){echo "checked";}?>/>
 													<input id="libelle_<?php echo $q;?>_<?php echo $r;?>" type="text" class="form-control" style="display:inline;width:70%" name="libelle_<?php echo $q;?>_<?php echo $r;?>" value="<?php echo str_replace('"',"'",$reponse->libelle);?>" />
-													<input onchange="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" onclick="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" maxlength= "2" id="vote_<?php echo $q;?>_<?php echo $r;?>" type="text" style='display:inline;width:50px' class="form-control" name="vote_<?php echo $q;?>_<?php echo $r;?>" value="{!! $reponse->vote !!}" />												
+													<input onchange="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" onclick="recalcul_vote(<?php echo $q;?>,<?php echo $r;?>)" maxlength= "2" id="vote_<?php echo $q;?>_<?php echo $r;?>" type="text" style='display:inline;width:50px' class="form-control" name="vote_<?php echo $q;?>_<?php echo $r;?>" value="{!! $reponse->vote !!}" />
 												</li>
 												<?php
 											}
-											?>											
+											?>
 											</ul>
 										</div>
 									</div>
 									<hr/>
 									<?php
 								}
-								?>							
+								?>
 								<div class="form-group">
 									<div class="col-md-8 col-md-offset-4">
 										<button type="submit" class="btn btn-primary">
@@ -244,7 +257,7 @@
 										</button>
 
 									</div>
-								</div>                    
+								</div>
 							{!! Form::close() !!}
 						</div>
 					</div>
