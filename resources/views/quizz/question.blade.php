@@ -145,7 +145,7 @@ $num_quizz = $quizz->id;
 					//Affichage du media
 					if (trim($question->pj) != ""){		
 						$display = "";
-						if ($question->cacher_media==1){
+						if ($question->cacher_media==0){
 							$display = "display:none;";
 						}
 						?>
